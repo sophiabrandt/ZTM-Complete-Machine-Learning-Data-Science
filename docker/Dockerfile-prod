@@ -30,7 +30,7 @@ WORKDIR /usr/src/app
 # add non-root user and give permissions
 RUN addgroup --system user && adduser --system -G user user
 RUN chown -R user:user /usr/src/app && \
-      chmod -R 755 /usr/src/app
+      chown -R user:user /opt/conda
 USER user
 
 # copy code
@@ -40,3 +40,6 @@ COPY ./notebooks /notebooks
 # environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+
+# run conda commands from environment
+ENTRYPOINT ["conda", "run", "-n", "base"]

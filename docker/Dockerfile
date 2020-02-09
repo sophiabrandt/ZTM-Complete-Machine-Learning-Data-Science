@@ -7,3 +7,6 @@ WORKDIR /usr/src/app
 # install packages
 COPY ./docker/environment.yml .
 RUN conda update -n base conda && conda env update
+
+# run conda commands from environment
+ENTRYPOINT ["conda", "run", "-n", "base"]
