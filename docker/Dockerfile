@@ -8,5 +8,8 @@ WORKDIR /usr/src/app
 COPY ./docker/environment.yml .
 RUN conda update -n base conda && conda env update
 
+# copy custom Jupyter Lab settings
+COPY ./jupyter-codemirror-settings.json /root/.jupyter/lab/user-settings/@jupyterlab/codemirror-extension/commands.jupyterlab-settings
+
 # run conda commands from environment
 ENTRYPOINT ["conda", "run", "-n", "base"]
