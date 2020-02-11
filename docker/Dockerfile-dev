@@ -1,0 +1,22 @@
+# base image
+FROM frolvlad/alpine-miniconda3:python3.7
+
+# set working directory
+WORKDIR /usr/src/app
+
+# install packages
+COPY ./docker/environment-dev.yml .
+RUN conda update -n base conda && \
+          conda env update -n base -f environment-dev.yml && \
+          conda clean -afy
+
+# Make RUN commands use base environment:
+SHELL ["conda", "run", "-n", "base", "/bin/sh", "-c"]
+
+# copy custom Jupyter Lab settings
+COPY ./jupyter-codemirror-settings.json /root/.jupyter/lab/user-settings/@jupyterlab/codemirror-extension/commands.jupyterlab-settings
+# install jupyter lab vim keybindings for the notebooks
+RUN jupyter labextension install jupyterlab_vim
+
+# run conda commands from environment
+ENTRYPOINT ["conda", "run", "-n", "base"]

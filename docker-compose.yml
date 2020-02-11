@@ -3,7 +3,7 @@ version: "2.4"
 services:
   python:
     build:
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/Dockerfile-dev
       context: ./
     env_file:
       - .env_dev
