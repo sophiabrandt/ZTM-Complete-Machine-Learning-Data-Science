@@ -1,4 +1,4 @@
-name: base
+name: ds-ml
 channels:
   - conda-forge
   - nodefaults
