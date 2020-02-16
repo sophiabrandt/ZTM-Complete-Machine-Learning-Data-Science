@@ -9,9 +9,6 @@ COPY ./docker/environment-dev.yml .
 RUN conda update -n base conda && \
               conda env create -f environment-dev.yml && \
               conda clean -afy
-# RUN conda update -n base conda && \
-#           conda env update -n base -f environment-dev.yml && \
-#           conda clean -afy
 
 # Make RUN commands use base environment:
 SHELL ["conda", "run", "-n", "ds-ml", "/bin/sh", "-c"]
