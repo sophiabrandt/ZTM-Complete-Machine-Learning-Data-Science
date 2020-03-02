@@ -1,22 +1,53 @@
-# base image
-FROM frolvlad/alpine-miniconda3:python3.7
+###############
+# BUILD IMAGE #
+###############
+FROM frolvlad/alpine-miniconda3:python3.7 AS build
 
 # set working directory
 WORKDIR /usr/src/app
 
 # install packages
+# clean
 COPY ./docker/environment-dev.yml .
 RUN conda update -n base conda && \
-              conda env create -f environment-dev.yml && \
-              conda clean -afy
+          conda env create -f environment-dev.yml && \
+          conda clean -afy && \
+          find /opt/conda/ -follow -type f -name '*.a' -delete && \
+          find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
+          find /opt/conda/ -follow -type f -name '*.js.map' -delete
 
-# Make RUN commands use base environment:
+#################
+# RUNTIME IMAGE #
+#################
+FROM frolvlad/alpine-miniconda3:python3.7 AS runtime
+
+# create user
+ARG USER_ID
+ARG GROUP_ID
+
+# add non-root user and give permissions to workdir
+RUN addgroup --gid $GROUP_ID user && \
+          adduser --gecos '' -D -u $USER_ID -G user user && \
+          mkdir -p /usr/src/app && \
+          chown -R user:user /usr/src/app
+
+# copy from build image
+RUN rm -rf /opt/conda
+COPY --chown=user:user --from=build /opt/conda /opt/conda
+
+# set working directory
+WORKDIR /usr/src/app
+
+# Make RUN commands use conda environment
 SHELL ["conda", "run", "-n", "ds-ml", "/bin/sh", "-c"]
 
 # copy custom Jupyter Lab settings
-COPY ./jupyter-codemirror-settings.json /root/.jupyter/lab/user-settings/@jupyterlab/codemirror-extension/commands.jupyterlab-settings
+COPY ./jupyter-codemirror-settings.json /home/user/.jupyter/lab/user-settings/@jupyterlab/codemirror-extension/commands.jupyterlab-settings
 # install jupyter lab vim keybindings for the notebooks
 RUN jupyter labextension install jupyterlab_vim
+
+# switch to non-root user
+USER user
 
 # run conda commands from environment
 ENTRYPOINT ["conda", "run", "-n", "ds-ml"]

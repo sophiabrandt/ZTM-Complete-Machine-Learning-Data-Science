@@ -5,12 +5,15 @@ services:
     build:
       dockerfile: ./docker/Dockerfile-dev
       context: ./
+      args:
+        - USER_ID=${USER_ID:-0}
+        - GROUP_ID=${GROUP_ID:-0}
     env_file:
       - .env_dev
     ports:
       - "8888:8888"
     command:
-      jupyter lab --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token='local_dev'
+      jupyter lab --no-browser --ip=0.0.0.0 --NotebookApp.token='local_dev'
     volumes:
       - './data:/usr/src/app/data'
       - './code:/usr/src/app/code'

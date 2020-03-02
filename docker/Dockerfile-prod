@@ -21,9 +21,13 @@ RUN conda update -n base conda && \
 #################
 FROM frolvlad/alpine-miniconda3:python3.7 AS runtime
 
+# create user
+ARG USER_ID
+ARG GROUP_ID
+
 # add non-root user and give permissions to workdir
-RUN addgroup --system user && \
-          adduser --system -G user user && \
+RUN addgroup --gid $GROUP_ID user && \
+          adduser --system --gecos '' -D -u $USER_ID -g $GROUP_ID user && \
           mkdir -p /usr/src/app && \
           chown -R user:user /usr/src/app
 
