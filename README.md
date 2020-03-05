@@ -54,6 +54,8 @@ You can read my thoughts, lecture notes, and observations on my blog:
 - [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 01)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-01/)
 - [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 02)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-02/)
 - [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 03)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-03/)
+- [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 04)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-04/)
+- [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 05)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-05/)
 
 The project setup with Docker and docker-compose is heavily influenced by the [Data Science Docker Template](https://github.com/caesarnine/data-science-docker-template) by Binal Patel.
 
