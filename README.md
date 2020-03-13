@@ -56,6 +56,7 @@ You can read my thoughts, lecture notes, and observations on my blog:
 - [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 03)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-03/)
 - [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 04)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-04/)
 - [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 05)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-05/)
+- [A Walkthrough of the “Complete Machine Learning and Data Science: Zero to Mastery” Course (Part 06)](https://www.rockyourcode.com/a-walkthrough-of-the-complete-machine-learning-and-data-science-zero-to-mastery-course-part-06/)
 
 The project setup with Docker and docker-compose is heavily influenced by the [Data Science Docker Template](https://github.com/caesarnine/data-science-docker-template) by Binal Patel.
 
@@ -130,6 +131,8 @@ _Note:_ The Jupyter Notebook uses Vim key mappings for developent. See [Dockerfi
 1. Go to `http://localhost:8888` for JupyterLab. Enter access token: `local_dev`.
 
 2. Develop and save any notebooks into `/notebooks`. Save final artifacts/models needed for production in `/code`.
+
+3. Save final version of code and any models the code relies upon into `/code`.
 
 <!-- ROADMAP -->
 
