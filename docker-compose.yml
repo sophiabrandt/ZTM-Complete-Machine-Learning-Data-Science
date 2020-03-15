@@ -13,7 +13,7 @@ services:
     ports:
       - "8888:8888"
     command:
-      jupyter lab --no-browser --ip=0.0.0.0 --NotebookApp.token='local_dev'
+      jupyter lab --no-browser --ip=0.0.0.0 --NotebookApp.token='local_dev' --NotebookApp.port=8888
     volumes:
       - './data:/usr/src/app/data'
       - './code:/usr/src/app/code'
